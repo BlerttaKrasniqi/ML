@@ -25,4 +25,14 @@ print (diabetes_dataset.head())
 
 
 numeric_columns = diabetes_dataset.select_dtypes(include=numpy.number) #zgjedhja e kolonave qe permbajne vetem vlera numerike
-print(numeric_columns.groupby(diabetes_dataset['diabetes']).mean())
+#print(numeric_columns.groupby(diabetes_dataset['diabetes']).mean())
+
+
+x = diabetes_dataset.drop(columns='diabetes', axis=1) # axis = 0 per rresht
+#variabla x i permban te gjitha kolonat perveq kolones se rezultatit. Keto kolona nevojiten per me e trajnu modelin
+y = diabetes_dataset['diabetes']
+
+#print(x)
+#print(y)
+
+

@@ -4,12 +4,14 @@ from sklearn.preprocessing import StandardScaler,OneHotEncoder # perdoret per no
 from sklearn.model_selection import train_test_split # perdoret per ti ndare te dhenat ne training sets dhe testing sets
 from sklearn import svm # 
 from sklearn.metrics import accuracy_score  # vlereson performancen e modelit
+import warnings
 
+warnings.filterwarnings(action='ignore', category=UserWarning, module='sklearn')
 #Mbledhja dhe analizimi i te dhenave
 
 #ngarkimi i dataset - it
 
-diabetes_dataset = pandas.read_csv('diabetes_dataset.csv')
+diabetes_dataset = pandas.read_csv('Datasets/diabetes_dataset.csv')
 
 #funksioni .head() i kthen disa rreshta nga dataframe 
 print (diabetes_dataset.head())
@@ -83,14 +85,44 @@ classifier.fit(x_train,y_train)
 x_train_prediction = classifier.predict(x_train)
 train_accuracy = accuracy_score(x_train_prediction,y_train)
 
-print("Train accuracy",train_accuracy)
+#print("Train accuracy",train_accuracy)
 
 #accuracy score on the test data
 
 x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(x_test_prediction,y_test)
 
-print("Test accuracy score: ",test_accuracy)
+#print("Test accuracy score: ",test_accuracy)
 
  
 
+#Programi per detektim ne baze te hyrjeve te perdoruesit
+
+user_input_data = ("Female,80.0,0,0,No Info,31.98,7.0,280 ")
+user_input_list = user_input_data.split(',')
+# Convert to the appropriate data types (assuming numerical values need conversion)
+
+
+user_input_non_numerical = [user_input_list[0], user_input_list[4]]
+user_input_numerical = [float(user_input_list[1]), float(user_input_list[2]), 
+                        float(user_input_list[3]), float(user_input_list[5]), 
+                        float(user_input_list[6]), float(user_input_list[7])]
+
+user_input_non_numerical_encoded = encoder.transform([user_input_non_numerical]).toarray()
+user_input_numerical = numpy.array(user_input_numerical).reshape(1, -1)
+user_input_numerical_standardized = scaler.transform(user_input_numerical)
+
+user_input_transformed = numpy.hstack((user_input_numerical_standardized,user_input_non_numerical_encoded))
+
+
+input_transformed=user_input_transformed.reshape(1,-1)
+
+prediction = classifier.predict(input_transformed)
+print("Prediction:", prediction)
+
+# variabla prediction e kthen nje liste me vetem nje anetare
+
+if(prediction[0]==0):
+    print("The person does not have diabetes")
+else:
+    print("The person has diabetes")

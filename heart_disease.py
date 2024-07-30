@@ -1,5 +1,6 @@
 import numpy #per vargje
 import pandas # per frames
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
@@ -26,5 +27,13 @@ pandas.set_option('display.width',1000)
 
 x = heart_dataset.drop(columns='target',axis=1)
 y = heart_dataset['target']
-print(y)
+#print(y)
+
+#Standardizimi i te dhenave
+
+scaler = StandardScaler()
+scaler.fit(x)
+std_data = scaler.transform(x)
+print(std_data)
+
 

@@ -35,5 +35,9 @@ scaler = StandardScaler()
 scaler.fit(x)
 std_data = scaler.transform(x)
 print(std_data)
+x = std_data
+#Ndarja e te dhenave ne training data dhe test data
 
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.3,stratify=y,random_state=2)
 
+#print(x.shape,x_train.shape,x_test.shape)

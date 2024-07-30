@@ -59,3 +59,21 @@ print("Test accuracy score: ",test_accuracy)
 
 
 
+#Programi per detektim ne baze te hyrjeve te dhena
+
+input_data = (38,1,2,138,175,0,1,173,0,0,2,4,2)
+
+#input data => numpy array
+
+input_data_numpy_array = numpy.asarray(input_data)
+
+#reshape vargun per te marre rez vetem per nje varg hyrjesh
+
+input_data_reshaped = input_data_numpy_array.reshape(1,-1)
+prediction = classifier.predict(input_data_reshaped)
+print("Prediction: ",prediction)
+
+if(prediction[0]==0):
+    print("The person does not have heart disease")
+else:
+    print("The person has heart disease")

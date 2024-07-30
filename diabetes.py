@@ -96,7 +96,7 @@ test_accuracy = accuracy_score(x_test_prediction,y_test)
 
  
 
-#Programi per detektim ne baze te hyrjeve te perdoruesit
+#Programi per detektim ne baze te hyrjeve te dhena
 
 user_input_data = ("Female,80.0,0,0,No Info,31.98,7.0,280 ")
 user_input_list = user_input_data.split(',')

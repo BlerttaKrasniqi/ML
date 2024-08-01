@@ -24,6 +24,10 @@ pandas.set_option('display.width',1000)
 
 
 #print(heart_dataset.isnull().sum())
+
+
+
+#------------------------------------------------------
 #ndarja e te dhenave ne  feature and target
 
 x = heart_dataset.drop(columns='target',axis=1)

@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
 
 #ngarkimi i dataset
 
@@ -21,8 +22,8 @@ pandas.set_option('display.width',1000)
 
 #Kontrollo missing value:
 
-#print(heart_dataset.isnull().sum())
 
+#print(heart_dataset.isnull().sum())
 #ndarja e te dhenave ne  feature and target
 
 x = heart_dataset.drop(columns='target',axis=1)
@@ -77,3 +78,11 @@ if(prediction[0]==0):
     print("The person does not have heart disease")
 else:
     print("The person has heart disease")
+
+
+
+plt.figure(figsize=(8,7))
+plt.xlabel('age', fontsize=10)
+plt.ylabel('count',fontsize=10)
+heart_dataset['age'].hist(edgecolor="black")
+plt.show()

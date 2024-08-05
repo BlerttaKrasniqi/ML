@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
+import seaborn
 
 #ngarkimi i dataset
 
@@ -84,9 +85,32 @@ else:
     print("The person has heart disease")
 
 
-
+#Histogram
 plt.figure(figsize=(8,7))
 plt.xlabel('age', fontsize=10)
 plt.ylabel('count',fontsize=10)
 heart_dataset['age'].hist(edgecolor="black")
+plt.show()
+
+
+#Pair plot
+
+seaborn.pairplot(heart_dataset[['age','sex','cp','target']],hue='target')
+plt.show()
+
+# Heatmap
+
+correlation_matrix = heart_dataset.corr()
+plt.figure(figsize=(15,10))
+seaborn.heatmap(correlation_matrix,annot=True,cmap='coolwarm')
+plt.title('Correlation Matrix')
+plt.show()
+
+#Bar plot
+
+plt.figure(figsize=(10,6))
+heart_dataset['target'].value_counts().plot(kind='bar')
+plt.title('Count of heart disease status')
+plt.xlabel('Status (0 = No, 1 = Yes)')
+plt.ylabel('Count')
 plt.show()

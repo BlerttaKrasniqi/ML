@@ -5,6 +5,8 @@ from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 import warnings
+import matplotlib.pyplot as plt
+import seaborn
 
 warnings.filterwarnings(action='ignore',category=UserWarning,module='sklearn')
 
@@ -63,3 +65,34 @@ if prediction[0] == 1:
     print("The person has Parkinson's disease.")
 else:
     print("The person does not have Parkinson's disease.")
+
+
+# Scatter plots - vizualizimi i marredhenieve ndermjet dy karakteristikave numerike
+
+plt.figure(figsize=(10,6))
+colors = {0:'red',1:'blue'}
+plt.scatter(parkinsons_dataset['MDVP:Fo(Hz)'],parkinsons_dataset['MDVP:Fhi(Hz)'], c=parkinsons_dataset['status'].map(colors),alpha=0.5)
+plt.title('MDVP:Fo(Hz) vs MDVP:Fhi(Hz)')
+plt.xlabel('MDVP:Fo(Hz)')
+plt.ylabel('MDVP:Fhi(Hz)')
+plt.show()
+
+#Heatmap
+
+correlation_matrix = parkinsons_dataset.corr()
+plt.figure(figsize=(15,10))
+seaborn.heatmap(correlation_matrix,annot=True,cmap='coolwarm')
+plt.title('Correlation Matrix')
+plt.show()
+
+#Bar plot
+
+plt.figure(figsize=(10,6))
+
+
+parkinsons_dataset['status'].value_counts().plot(kind='bar')
+plt.title('Count of Parkinsons disease status')
+plt.xlabel('Status (0 = No, 1 = Yes)')
+plt.ylabel('Count')
+
+plt.show()

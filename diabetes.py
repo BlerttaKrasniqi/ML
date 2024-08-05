@@ -5,6 +5,8 @@ from sklearn.model_selection import train_test_split # perdoret per ti ndare te 
 from sklearn import svm # 
 from sklearn.metrics import accuracy_score  # vlereson performancen e modelit
 import warnings
+import matplotlib.pyplot as plt
+import seaborn
 
 warnings.filterwarnings(action='ignore', category=UserWarning, module='sklearn')
 #Mbledhja dhe analizimi i te dhenave
@@ -126,3 +128,35 @@ if(prediction[0]==0):
     print("The person does not have diabetes")
 else:
     print("The person has diabetes")
+
+
+#Pair plot - vizualizimi i marredhenieve ndermjet disa karakteristikave
+# seaborn.pairplot(diabetes_dataset[['age','gender','bmi','blood_glucose_level','diabetes']],hue='diabetes')
+# plt.show()
+
+#Scatter plot - vizualizimi i dy karakteristikave numerike
+
+plt.figure(figsize=(10,6))
+plt.scatter(diabetes_dataset['age'],diabetes_dataset['blood_glucose_level'])
+plt.title('age vs blood glucose level')
+plt.xlabel('age')
+plt.ylabel('blood glucose level')
+plt.show()
+
+#Heatmap
+
+correlation_matrix = diabetes_dataset.corr()
+plt.figure(figsize=(15,10))
+seaborn.heatmap(correlation_matrix,annot=True,cmap='coolwarm')
+plt.title('Correlation Matrix')
+plt.show()
+
+#Bar plot
+
+plt.figure(figsize=(10,6))
+diabetes_dataset['diabetes'].value_counts().plot(kind='bar')
+plt.title('Count of diabetes disease status')
+plt.xlabel('Status (0 = No, 1 = Yes)')
+plt.ylabel('Count')
+plt.show()
+

@@ -7,6 +7,7 @@ from sklearn.metrics import accuracy_score  # vlereson performancen e modelit
 import warnings
 import matplotlib.pyplot as plt
 import seaborn
+import pickle
 
 warnings.filterwarnings(action='ignore', category=UserWarning, module='sklearn')
 #Mbledhja dhe analizimi i te dhenave
@@ -141,15 +142,15 @@ plt.scatter(diabetes_dataset['age'],diabetes_dataset['blood_glucose_level'])
 plt.title('age vs blood glucose level')
 plt.xlabel('age')
 plt.ylabel('blood glucose level')
-plt.show()
+#plt.show()
 
 #Heatmap
 
-correlation_matrix = diabetes_dataset.corr()
-plt.figure(figsize=(15,10))
-seaborn.heatmap(correlation_matrix,annot=True,cmap='coolwarm')
-plt.title('Correlation Matrix')
-plt.show()
+# correlation_matrix = diabetes_dataset.corr()
+# plt.figure(figsize=(15,10))
+# seaborn.heatmap(correlation_matrix,annot=True,cmap='coolwarm')
+# plt.title('Correlation Matrix')
+# #plt.show()
 
 #Bar plot
 
@@ -158,5 +159,12 @@ diabetes_dataset['diabetes'].value_counts().plot(kind='bar')
 plt.title('Count of diabetes disease status')
 plt.xlabel('Status (0 = No, 1 = Yes)')
 plt.ylabel('Count')
-plt.show()
+#plt.show()
 
+#Ruajtja e modelit
+file_name = 'Models/diabetes_model.sav'
+#funksioni dump e converton python object ne byte stream qe mund te behen save ne nje file
+pickle.dump(classifier,open(file_name,'wb')) #wb - write binary file qe po e krijojme 
+
+#Ngarkimi i modelit
+load_model = pickle.load(open(file_name,'rb'))

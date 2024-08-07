@@ -7,6 +7,7 @@ from sklearn.metrics import accuracy_score
 import warnings
 import matplotlib.pyplot as plt
 import seaborn
+import pickle
 
 warnings.filterwarnings(action='ignore',category=UserWarning,module='sklearn')
 
@@ -69,30 +70,34 @@ else:
 
 # Scatter plots - vizualizimi i marredhenieve ndermjet dy karakteristikave numerike
 
-plt.figure(figsize=(10,6))
-colors = {0:'red',1:'blue'}
-plt.scatter(parkinsons_dataset['MDVP:Fo(Hz)'],parkinsons_dataset['MDVP:Fhi(Hz)'], c=parkinsons_dataset['status'].map(colors),alpha=0.5)
-plt.title('MDVP:Fo(Hz) vs MDVP:Fhi(Hz)')
-plt.xlabel('MDVP:Fo(Hz)')
-plt.ylabel('MDVP:Fhi(Hz)')
-plt.show()
+# plt.figure(figsize=(10,6))
+# colors = {0:'red',1:'blue'}
+# plt.scatter(parkinsons_dataset['MDVP:Fo(Hz)'],parkinsons_dataset['MDVP:Fhi(Hz)'], c=parkinsons_dataset['status'].map(colors),alpha=0.5)
+# plt.title('MDVP:Fo(Hz) vs MDVP:Fhi(Hz)')
+# plt.xlabel('MDVP:Fo(Hz)')
+# plt.ylabel('MDVP:Fhi(Hz)')
+# plt.show()
 
-#Heatmap
+# #Heatmap
 
-correlation_matrix = parkinsons_dataset.corr()
-plt.figure(figsize=(15,10))
-seaborn.heatmap(correlation_matrix,annot=True,cmap='coolwarm')
-plt.title('Correlation Matrix')
-plt.show()
+# correlation_matrix = parkinsons_dataset.corr()
+# plt.figure(figsize=(15,10))
+# seaborn.heatmap(correlation_matrix,annot=True,cmap='coolwarm')
+# plt.title('Correlation Matrix')
+# plt.show()
 
-#Bar plot
+# #Bar plot
 
-plt.figure(figsize=(10,6))
+# plt.figure(figsize=(10,6))
 
 
-parkinsons_dataset['status'].value_counts().plot(kind='bar')
-plt.title('Count of Parkinsons disease status')
-plt.xlabel('Status (0 = No, 1 = Yes)')
-plt.ylabel('Count')
+# parkinsons_dataset['status'].value_counts().plot(kind='bar')
+# plt.title('Count of Parkinsons disease status')
+# plt.xlabel('Status (0 = No, 1 = Yes)')
+# plt.ylabel('Count')
 
-plt.show()
+# plt.show()
+
+file_name = 'Models/parkinsons_model.sav'
+pickle.dump(classifier,open(file_name,'wb'))
+load_model = pickle.load(open(file_name,'rb'))

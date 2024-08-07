@@ -6,6 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 import seaborn
+import pickle
 
 #ngarkimi i dataset
 
@@ -114,3 +115,8 @@ plt.title('Count of heart disease status')
 plt.xlabel('Status (0 = No, 1 = Yes)')
 plt.ylabel('Count')
 plt.show()
+
+
+file_name = 'Models/heart_disease_model.sav'
+pickle.dump(classifier,open(file_name,'wb'))
+load_model = pickle.load(open(file_name,'rb'))

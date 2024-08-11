@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify
 from diabetes import load_model, make_prediction
 from heart_disease import load_model as load_heart_model,make_prediction as heart_prediction
 from parkinsons import load_model as parkinsons_load_model, make_prediction as parkinsons_prediction
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Load the model, scaler, and encoder once at the start
 model, scaler, encoder = load_model()

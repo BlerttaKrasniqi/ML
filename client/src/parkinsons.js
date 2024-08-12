@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ParkinsonsForm() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     'MDVP:Fo(Hz)': '',
     'MDVP:Fhi(Hz)': '',
@@ -298,6 +301,7 @@ function ParkinsonsForm() {
           {result === 1 ? 'Has parkinsons' : 'Does not have parkinsons'}
         </h2>
       )}
+      <button onClick={() => navigate('/')}>Back to Main Page</button>
     </div>
   );
 }

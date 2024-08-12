@@ -1,15 +1,20 @@
 import React from 'react';
-//import DiabetesForm from './diabetes';
-//import Heart_Disease_Form from './heart_disease';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MainPage from './main';
+import HeartDiseaseForm from './heart_disease';
 import ParkinsonsForm from './parkinsons';
+import DiabetesForm from './diabetes';
 
 function App() {
   return (
-    <div className="App">
-      {/* <DiabetesForm /> */}
-      {/* <Heart_Disease_Form /> */}
-      <ParkinsonsForm />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/diabetes" element={<DiabetesForm />} />
+        <Route path="/heart_disease" element={<HeartDiseaseForm />} />
+        <Route path="/parkinsons" element={<ParkinsonsForm />} />
+      </Routes>
+    </Router>
   );
 }
 

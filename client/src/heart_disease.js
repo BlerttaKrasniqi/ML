@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Heart_Disease_Form() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     age: '',
     sex: '',
@@ -183,6 +185,7 @@ function Heart_Disease_Form() {
           {result === 1 ? 'Has heart disease' : 'Does not have heart disease'}
         </h2>
       )}
+      <button onClick={() => navigate('/')}>Back to Main Page</button>
     </div>
   );
 }

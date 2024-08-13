@@ -7,7 +7,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# Load the model, scaler, and encoder once at the start
+
 model, scaler, encoder = load_model()
 heart_model,heart_scaler = load_heart_model()
 parkinsons_model,parkinsons_scaler = parkinsons_load_model()
@@ -20,14 +20,14 @@ def home():
 def predict_diabetes():
     if request.method == 'POST':
         try:
-            # Get the data from the POST request
+          
             data = request.get_json(force=True)
             user_input = data['input']
             
-            # Call the predict function from diabetes.py
+            
             prediction = make_prediction(model, scaler, encoder, user_input)
             
-            # Return the prediction result as JSON
+           
             return jsonify({
                 'prediction': int(prediction[0]),
                 'message': 'The person has diabetes' if prediction[0] == 1 else 'The person does not have diabetes'

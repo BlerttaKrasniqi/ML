@@ -11,14 +11,14 @@ import pickle
 
 warnings.filterwarnings(action='ignore', category=UserWarning, module='sklearn')
 
-# Data loading and preprocessing
+
 diabetes_dataset = pd.read_csv('Datasets/diabetes_dataset.csv')
 
-# Feature selection
+
 x = diabetes_dataset.drop(columns='diabetes', axis=1)
 y = diabetes_dataset['diabetes']
 
-# Standardization
+
 scaler = StandardScaler()
 non_numerical_columns = ['gender', 'smoking_history']
 nr_columns = [column for column in x.columns if column not in non_numerical_columns]
@@ -28,24 +28,23 @@ x_non_numerical_encoder = encoder.fit_transform(x[non_numerical_columns]).toarra
 x_nr_columns_standardized = scaler.fit_transform(x[nr_columns])
 x_transformed = np.hstack((x_nr_columns_standardized, x_non_numerical_encoder))
 
-# Splitting data
+
 x_train, x_test, y_train, y_test = train_test_split(x_transformed, y, test_size=0.3, stratify=y, random_state=2)
 
-# Model training
+
 classifier = svm.SVC(kernel='linear')
 classifier.fit(x_train, y_train)
 
-# Evaluation
+
 x_train_prediction = classifier.predict(x_train)
 train_accuracy = accuracy_score(y_train, x_train_prediction)
 x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(y_test, x_test_prediction)
 
-# Save the model, scaler, and encoder
+
 with open('Models/diabetes_model.sav', 'wb') as f:
     pickle.dump((classifier, scaler, encoder), f)
 
-# Functions for Flask app
 def load_model(filename='Models/diabetes_model.sav'):
     with open(filename, 'rb') as f:
         model, scaler, encoder = pickle.load(f)
@@ -65,7 +64,6 @@ def make_prediction(model, scaler, encoder, input_data):
     prediction = model.predict(user_input_transformed)
     return prediction
 
-# Data visualization (optional)
 def data_visualization():
     plt.figure(figsize=(10, 6))
     plt.scatter(diabetes_dataset['age'], diabetes_dataset['blood_glucose_level'])

@@ -18,7 +18,8 @@ const MainContainer = styled.div`
 
   background-size: cover;
   background-color: #f0f4f8;
-  background: linear-gradient(135deg, #f8facd, #fce3db);
+
+  background: linear-gradient(135deg, #f8f9c2, #f9d2cd);
 `;
 
 const Title = styled.h1`
@@ -28,6 +29,18 @@ const Title = styled.h1`
   align-items: center;
   display: flex;
   // text-shadow: 0 0 5px #3355ff, 0 0 10px #3355ff;
+  text-shadow: 2px 2px 5px;
+  animation: fadeIn 2s ease-in-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
 `;
 
 const CardContainer = styled.div`
@@ -39,8 +52,9 @@ const CardContainer = styled.div`
 
 const Card = styled.button`
   background-color: #49a9c2;
+  background: linear-gradient(135deg, #6f72f5, #49a9c2);
   border-radius: 15px;
-  border-color: white;
+  border-color: #2b58dc;
   color: white;
 
   width: 200px;
@@ -50,10 +64,12 @@ const Card = styled.button`
   padding: 2rem;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.3s ease;
+
+  transition: transform 0.3s ease-in-out;
+  perspective: 1000px;
 
   &:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
   }
 
   h2 {
@@ -69,28 +85,39 @@ const Card = styled.button`
 
 const DiabetesCard = styled(Card)`
   &:hover {
-    background-color: yellow;
+    background: linear-gradient(135deg, #fffd78, #fffc24);
     color: black;
+    box-shadow: 0px 0px 20px 5px rgba(255, 255, 0, 0.7);
+    border-color: black;
   }
 `;
 
 const HeartCard = styled(Card)`
   &:hover {
-    background-color: red;
-    color: white;
+    background: linear-gradient(135deg, #ff4848, #ff0707);
+    color: black;
+    box-shadow: 0px 0px 20px 5px rgba(255, 0, 0, 0.7);
+    border-color: black;
   }
 `;
 
 const ParkinsonsCard = styled(Card)`
   &:hover {
-    background-color: salmon;
-    color: white;
+    background: linear-gradient(135deg, #fda6a6, #f98f8f);
+    color: black;
+    box-shadow: 0px 0px 20px 5px rgba(255, 160, 122, 0.7);
+    border-color: black;
   }
 `;
 
 const IconWrapper = styled.div`
   font-size: 2rem;
   margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 function MainPage() {

@@ -103,9 +103,9 @@ const HeartCard = styled(Card)`
 
 const ParkinsonsCard = styled(Card)`
   &:hover {
-    background: linear-gradient(135deg, #fda6a6, #f98f8f);
+    background: linear-gradient(135deg, #eacbff, #e3b8ff);
     color: black;
-    box-shadow: 0px 0px 20px 5px rgba(255, 160, 122, 0.7);
+    box-shadow: 0px 0px 20px 5px rgba(221, 171, 255, 0.7);
     border-color: black;
   }
 `;

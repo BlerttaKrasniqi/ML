@@ -138,9 +138,9 @@ function DiabetesForm() {
       body: JSON.stringify({ input: Object.values(formData).join(',') }),
     });
     const data = await response.json();
-    const message =
-      data.prediction === 1 ? 'You have diabetes' : 'You do not have diabetes';
-    setResult(message);
+    // const message =
+    //   data.prediction === 1 ? 'You have diabetes' : 'You do not have diabetes';
+    setResult(data.prediction);
   };
 
   return (
@@ -254,9 +254,10 @@ function DiabetesForm() {
           </FormRow>
           <Button type="submit">Predict</Button>
         </form>
-        {result && (
+
+        {result !== null && (
           <Result>
-            Result:{' '}
+            Prediction Result:{' '}
             {result === 1 ? 'You have Diabetes' : 'You do not have Diabetes'}
           </Result>
         )}

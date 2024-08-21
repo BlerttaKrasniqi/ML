@@ -146,11 +146,11 @@ function Heart_Disease_Form() {
     );
 
     const data = await response.json();
-    const message =
-      data.prediction === 1
-        ? 'You have heart disease'
-        : 'You do not have heart disease';
-    setResult(message);
+    // const message =
+    //   data.prediction === 1
+    //     ? 'You have heart disease'
+    //     : 'You do not have heart disease';
+    setResult(data.prediction);
   };
 
   return (
@@ -326,12 +326,10 @@ function Heart_Disease_Form() {
           </FormRow>
           <Button type="submit">Predict</Button>
         </form>
-        {result && (
+        {result !== null && (
           <Result>
-            Result:{' '}
-            {result === 1
-              ? 'You have Heart Disease'
-              : 'You do not have Heart Disease'}
+            Prediction Result:{' '}
+            {result === 1 ? 'You have Diabetes' : 'You do not have Diabetes'}
           </Result>
         )}
         <BackButton onClick={() => navigate('/')}>

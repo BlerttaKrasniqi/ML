@@ -2,5 +2,9 @@ streamlit
 scikit-learn
 pandas
 numpy
-Flask
-gunicorn
+Flask==3.0.3
+gunicorn==23.0.0
+scikit-learn==1.0.2
+pandas==1.4.2
+numpy==1.21.2
+

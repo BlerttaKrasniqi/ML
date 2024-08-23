@@ -4,7 +4,3 @@ pandas
 numpy
 Flask
 gunicorn
-sklearn
-warnings
-seaborn
-pickle

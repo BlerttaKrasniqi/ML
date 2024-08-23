@@ -1,39 +1,58 @@
+# Step 1: Frontend Build (Node.js)
 FROM node:14 as frontend-builder
 
+# Set working directory for frontend
 WORKDIR /app
 
+# Copy package.json and package-lock.json for frontend dependencies
 COPY client/package*.json ./
 
+# Install frontend dependencies
 RUN npm install
 
+# Copy the rest of the frontend files
 COPY client/ ./
 
+# Build the frontend
 RUN npm run build
 
+
+# Step 2: Backend (Python)
 FROM python:3.9 as backend
 
+# Set working directory for backend
 WORKDIR /app
 
+# Copy the requirements.txt and install Python dependencies
 COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+# Copy the Python backend code (from the server directory)
 COPY server/ ./
 
+# Expose Flask port
 EXPOSE 5000
 
+# Set environment variables for Flask
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 
+# Run Flask app
 CMD ["flask", "run", "--host=0.0.0.0"]
 
+
+# Step 3: Serve Frontend with Nginx
 FROM nginx:alpine
 
+# Copy the built frontend files from frontend-builder
 COPY --from=frontend-builder /app/build /usr/share/nginx/html
 
+# Copy the backend app from the backend container
 COPY --from=backend /app /app
 
+# Expose Nginx HTTP port
 EXPOSE 80
 
-
+# Start Nginx to serve the app
 CMD ["nginx", "-g", "daemon off;"]

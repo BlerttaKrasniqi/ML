@@ -31,6 +31,7 @@ EXPOSE 5000
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 RUN apt-get update && apt-get install -y build-essential gcc g++ libopenblas-dev cython
+RUN pip install --upgrade pip setuptools
 
 
 CMD ["flask", "run", "--host=0.0.0.0"]

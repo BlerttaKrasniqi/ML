@@ -16,7 +16,8 @@ pandas.set_option('display.max_columns',None)
 pandas.set_option('display.width',1000)
 
 
-#print(heart_dataset.head())
+
+print(heart_dataset.head())
 
 
 

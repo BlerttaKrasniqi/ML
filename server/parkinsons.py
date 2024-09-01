@@ -13,6 +13,7 @@ warnings.filterwarnings(action='ignore',category=UserWarning,module='sklearn')
 
 parkinsons_dataset = pandas.read_csv("Datasets/parkinsons_dataset.csv")
 
+
 #print(parkinsons_dataset['status'].value_counts())
 
 #print(parkinsons_dataset.isnull().sum())
@@ -69,32 +70,28 @@ def make_prediction(model,scaler,input_data):
 #Scatter plots 
 
 def data_visualization():
-    plt.figure(figsize=(10,6))
-    colors = {0:'red',1:'blue'}
-    plt.scatter(parkinsons_dataset['MDVP:Fo(Hz)'],parkinsons_dataset['MDVP:Fhi(Hz)'], c=parkinsons_dataset['status'].map(colors),alpha=0.5)
+    plt.figure(figsize=(10, 6))
+    colors = {0: 'red', 1: 'blue'}
+    plt.scatter(parkinsons_dataset['MDVP:Fo(Hz)'], parkinsons_dataset['MDVP:Fhi(Hz)'], c=parkinsons_dataset['status'].map(colors), alpha=0.5)
     plt.title('MDVP:Fo(Hz) vs MDVP:Fhi(Hz)')
     plt.xlabel('MDVP:Fo(Hz)')
     plt.ylabel('MDVP:Fhi(Hz)')
     plt.show()
 
-    #Heatmap
-
-    correlation_matrix = parkinsons_dataset.corr()
-    plt.figure(figsize=(15,10))
-    seaborn.heatmap(correlation_matrix,annot=True,cmap='coolwarm')
+    # Heatmap - Drop non-numeric columns for correlation calculation
+    numeric_dataset = parkinsons_dataset.drop(columns=['name'])
+    correlation_matrix = numeric_dataset.corr()
+    plt.figure(figsize=(15, 10))
+    seaborn.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
     plt.title('Correlation Matrix')
     plt.show()
 
-    #Bar plot
-
-    plt.figure(figsize=(10,6))
-
-
+    # Bar plot
+    plt.figure(figsize=(10, 6))
     parkinsons_dataset['status'].value_counts().plot(kind='bar')
-    plt.title('Count of Parkinsons disease status')
+    plt.title('Count of Parkinsons Disease Status')
     plt.xlabel('Status (0 = No, 1 = Yes)')
     plt.ylabel('Count')
-
     plt.show()
 
 

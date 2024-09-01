@@ -14,6 +14,8 @@ warnings.filterwarnings(action='ignore', category=UserWarning, module='sklearn')
 
 diabetes_dataset = pd.read_csv('Datasets/diabetes_dataset.csv')
 
+print(diabetes_dataset.head())
+
 
 x = diabetes_dataset.drop(columns='diabetes', axis=1)
 y = diabetes_dataset['diabetes']
@@ -72,7 +74,8 @@ def data_visualization():
     plt.ylabel('Blood Glucose Level')
     plt.show()
 
-    correlation_matrix = diabetes_dataset.corr()
+    numeric_columns = diabetes_dataset.select_dtypes(include=[np.number])
+    correlation_matrix = numeric_columns.corr()
     plt.figure(figsize=(15, 10))
     sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
     plt.title('Correlation Matrix')

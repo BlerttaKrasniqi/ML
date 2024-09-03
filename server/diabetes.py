@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LogisticRegression
 import warnings
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -36,12 +37,16 @@ x_train, x_test, y_train, y_test = train_test_split(x_transformed, y, test_size=
 
 classifier = svm.SVC(kernel='linear')
 classifier.fit(x_train, y_train)
+# classifier = LogisticRegression()
+# classifier.fit(x_train,y_train)
 
 
 x_train_prediction = classifier.predict(x_train)
 train_accuracy = accuracy_score(y_train, x_train_prediction)
+print(train_accuracy)
 x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(y_test, x_test_prediction)
+print(test_accuracy)
 
 
 with open('Models/diabetes_model.sav', 'wb') as f:
@@ -88,8 +93,8 @@ def data_visualization():
     plt.ylabel('Count')
     plt.show()
 
-if __name__ == '__main__':
-    data_visualization()
+# if __name__ == '__main__':
+    #data_visualization()
 
 
 

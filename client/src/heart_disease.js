@@ -185,14 +185,13 @@ function Heart_Disease_Form() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaHeartbeat /> Chest Pain Type (Chest Pain Type):
+                <FaHeartbeat /> Chest Pain Type:
               </Label>
               <Input
                 type="number"
                 name="cp"
                 min="0"
                 max="2"
-                placeholder="0 - typical angina, 1 - non-typical angina, 2 - nonanglinal pain"
                 value={formData.cp}
                 onChange={handleChange}
                 required
@@ -226,7 +225,7 @@ function Heart_Disease_Form() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaStethoscope /> Fasting Blood Sugar (Fasting Blood Sugar):
+                <FaStethoscope /> Fasting Blood Sugar:
               </Label>
               <Input
                 type="number"
@@ -265,7 +264,8 @@ function Heart_Disease_Form() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaHeartbeat /> Exang (Exercise Induced Angina):
+                <FaHeartbeat />
+                Exercise Induced Angina:
               </Label>
               <Input
                 type="number"
@@ -306,13 +306,15 @@ function Heart_Disease_Form() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaHeartbeat /> CA - Number of Major Vessels:
+                <FaHeartbeat />
+                Number of Major Vessels:
               </Label>
               <Input
                 type="number"
                 name="ca"
                 min="0"
                 max="3"
+                placeholder="CA "
                 value={formData.ca}
                 onChange={handleChange}
                 required

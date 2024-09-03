@@ -3,6 +3,7 @@ import pandas
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn import svm
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 import seaborn
@@ -51,6 +52,9 @@ x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.3,stratify=y,ra
 
 classifier = LogisticRegression()
 classifier.fit(x_train,y_train)
+
+# classifier = svm.SVC(kernel="linear")
+# classifier.fit(x_train,y_train)
 
 
 x_train_prediction = classifier.predict(x_train)

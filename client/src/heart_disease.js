@@ -185,11 +185,14 @@ function Heart_Disease_Form() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaHeartbeat /> CP (Chest Pain Type):
+                <FaHeartbeat /> Chest Pain Type (Chest Pain Type):
               </Label>
               <Input
                 type="number"
                 name="cp"
+                min="0"
+                max="2"
+                placeholder="0 - typical angina, 1 - non-typical angina, 2 - nonanglinal pain"
                 value={formData.cp}
                 onChange={handleChange}
                 required
@@ -199,7 +202,7 @@ function Heart_Disease_Form() {
           <FormRow>
             <FormGroup>
               <Label>
-                <FaThermometerHalf /> Trestbps:
+                <FaThermometerHalf /> Resting blood pressure:
               </Label>
               <Input
                 type="number"
@@ -211,7 +214,7 @@ function Heart_Disease_Form() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaVial /> Chol:
+                <FaVial /> Cholesterol:
               </Label>
               <Input
                 type="number"
@@ -223,7 +226,7 @@ function Heart_Disease_Form() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaStethoscope /> FBS (Fasting Blood Sugar):
+                <FaStethoscope /> Fasting Blood Sugar (Fasting Blood Sugar):
               </Label>
               <Input
                 type="number"
@@ -254,6 +257,7 @@ function Heart_Disease_Form() {
               <Input
                 type="number"
                 name="thalach"
+                placeholder="Max heart frequency after a stress test"
                 value={formData.thalach}
                 onChange={handleChange}
                 required
@@ -266,6 +270,9 @@ function Heart_Disease_Form() {
               <Input
                 type="number"
                 name="exang"
+                min="0"
+                max="1"
+                placeholder="Chest pain after physical activities"
                 value={formData.exang}
                 onChange={handleChange}
                 required
@@ -299,11 +306,13 @@ function Heart_Disease_Form() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaHeartbeat /> CA (Number of Major Vessels):
+                <FaHeartbeat /> CA - Number of Major Vessels:
               </Label>
               <Input
                 type="number"
                 name="ca"
+                min="0"
+                max="3"
                 value={formData.ca}
                 onChange={handleChange}
                 required

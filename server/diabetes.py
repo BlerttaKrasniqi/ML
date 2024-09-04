@@ -15,7 +15,7 @@ warnings.filterwarnings(action='ignore', category=UserWarning, module='sklearn')
 
 diabetes_dataset = pd.read_csv('Datasets/diabetes_dataset.csv')
 
-print(diabetes_dataset.head())
+# print(diabetes_dataset.head())
 
 
 x = diabetes_dataset.drop(columns='diabetes', axis=1)
@@ -43,20 +43,20 @@ classifier.fit(x_train, y_train)
 
 x_train_prediction = classifier.predict(x_train)
 train_accuracy = accuracy_score(y_train, x_train_prediction)
-print(train_accuracy)
+# print(train_accuracy)
 x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(y_test, x_test_prediction)
-print(test_accuracy)
+# print(test_accuracy)
 
 cm = confusion_matrix(y_test,x_test_prediction)
-print("Confusion matrix")
-print(cm)
+# print("Confusion matrix")
+# print(cm)
 plt.figure(figsize=(8, 6))
 sns.heatmap(cm, annot=True, fmt='d', cmap='Reds')
 plt.title('Confusion Matrix')
 plt.xlabel('Predicted')
 plt.ylabel('Actual')
-plt.show()
+# plt.show()
 
 
 with open('Models/diabetes_model.sav', 'wb') as f:

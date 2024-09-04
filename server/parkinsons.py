@@ -47,23 +47,23 @@ classifier.fit(x_train,y_train)
 
 x_train_prediction = classifier.predict(x_train)
 train_accuracy = accuracy_score(x_train_prediction,y_train)
-print("Train accuracy score: ",train_accuracy)
+# print("Train accuracy score: ",train_accuracy)
 
 x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(x_test_prediction,y_test)
-print("Test accuracy score: ",test_accuracy)
+# print("Test accuracy score: ",test_accuracy)
 
 #Confusion matrix
 
 cm = confusion_matrix(y_test,x_test_prediction)
-print("Confusion Matrix: ")
-print(cm)
+# print("Confusion Matrix: ")
+# print(cm)
 plt.figure(figsize=(8, 6))
 seaborn.heatmap(cm, annot=True, fmt='d', cmap='Blues')
 plt.title('Confusion Matrix')
 plt.xlabel('Predicted')
 plt.ylabel('Actual')
-plt.show()
+# plt.show()
 
 
 with open('parkinsons_model.sav','wb') as f:

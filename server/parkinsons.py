@@ -39,11 +39,11 @@ x = std_data
 
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.3,stratify=y,random_state=2)
 
-classifier = svm.SVC(kernel='linear')
-classifier.fit(x_train,y_train)
-
-# classifier = LogisticRegression()
+# classifier = svm.SVC(kernel='linear')
 # classifier.fit(x_train,y_train)
+
+classifier = LogisticRegression()
+classifier.fit(x_train,y_train)
 
 x_train_prediction = classifier.predict(x_train)
 train_accuracy = accuracy_score(x_train_prediction,y_train)
@@ -51,7 +51,7 @@ train_accuracy = accuracy_score(x_train_prediction,y_train)
 
 x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(x_test_prediction,y_test)
-# print("Test accuracy score: ",test_accuracy)
+print("Test accuracy score: ",test_accuracy)
 
 #Confusion matrix
 

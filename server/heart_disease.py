@@ -18,7 +18,7 @@ pandas.set_option('display.width',1000)
 
 
 
-print(heart_dataset.head())
+#print(heart_dataset.head())
 
 
 
@@ -63,7 +63,7 @@ train_accuracy = accuracy_score(x_train_prediction,y_train)
 
 x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(x_test_prediction,y_test)
-# print("Test accuracy score: ",test_accuracy)
+print("Test accuracy score: ",test_accuracy)
 
 cm = confusion_matrix(y_test,x_test_prediction)
 # print("Confusion matrix")

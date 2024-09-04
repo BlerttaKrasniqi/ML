@@ -43,10 +43,10 @@ classifier.fit(x_train, y_train)
 
 x_train_prediction = classifier.predict(x_train)
 train_accuracy = accuracy_score(y_train, x_train_prediction)
-# print(train_accuracy)
+print(train_accuracy)
 x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(y_test, x_test_prediction)
-# print(test_accuracy)
+print(test_accuracy)
 
 cm = confusion_matrix(y_test,x_test_prediction)
 # print("Confusion matrix")

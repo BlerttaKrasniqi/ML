@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn import svm
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score,confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn
 import pickle
@@ -50,11 +50,11 @@ x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.3,stratify=y,ra
 
 #print(x.shape,x_train.shape,x_test.shape)
 
-classifier = LogisticRegression()
-classifier.fit(x_train,y_train)
-
-# classifier = svm.SVC(kernel="linear")
+# classifier = LogisticRegression()
 # classifier.fit(x_train,y_train)
+
+classifier = svm.SVC(kernel="linear")
+classifier.fit(x_train,y_train)
 
 
 x_train_prediction = classifier.predict(x_train)
@@ -64,6 +64,16 @@ print("Train accuracy score: ",train_accuracy)
 x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(x_test_prediction,y_test)
 print("Test accuracy score: ",test_accuracy)
+
+cm = confusion_matrix(y_test,x_test_prediction)
+print("Confusion matrix")
+print(cm)
+plt.figure(figsize=(8, 6))
+seaborn.heatmap(cm, annot=True, fmt='d', cmap='Purples')
+plt.title('Confusion Matrix')
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.show()
 
 
 with open('heart_disease_model.sav','wb') as f:

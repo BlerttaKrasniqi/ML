@@ -162,12 +162,11 @@ function ParkinsonsForm() {
           <FormRow>
             <FormGroup>
               <Label>
-                <FaBrain /> MDVP:Fo(Hz)
+                <FaBrain /> MDVP:Fo(Hz) - Voice frequency
               </Label>
               <Input
                 type="number"
                 name="MDVP:Fo(Hz)"
-                placeholder="Voice frequency"
                 value={formData['MDVP:Fo(Hz)']}
                 onChange={handleChange}
                 required
@@ -175,12 +174,11 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaWaveSquare /> MDVP:Fhi(Hz)
+                <FaWaveSquare /> MDVP:Fhi(Hz) - Max voice frequency
               </Label>
               <Input
                 type="number"
                 name="MDVP:Fhi(Hz)"
-                placeholder="Max voice frequency"
                 value={formData['MDVP:Fhi(Hz)']}
                 onChange={handleChange}
                 required
@@ -188,12 +186,11 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaWaveSquare /> MDVP:Flo(Hz)
+                <FaWaveSquare /> MDVP:Flo(Hz) - Min voice frequency
               </Label>
               <Input
                 type="number"
                 name="MDVP:Flo(Hz)"
-                placeholder="Min voice frequency"
                 value={formData['MDVP:Flo(Hz)']}
                 onChange={handleChange}
                 required
@@ -203,12 +200,11 @@ function ParkinsonsForm() {
           <FormRow>
             <FormGroup>
               <Label>
-                <FaMicrophone /> MDVP:Jitter(%)
+                <FaMicrophone /> MDVP:Jitter(%) - Change in frequency
               </Label>
               <Input
                 type="number"
                 name="MDVP:Jitter(%)"
-                placeholder="The change in frequency"
                 value={formData['MDVP:Jitter(%)']}
                 onChange={handleChange}
                 required
@@ -216,12 +212,11 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaMicrophone /> MDVP:Jitter(Abs)
+                <FaMicrophone /> MDVP:Jitter(Abs) - Absolute change
               </Label>
               <Input
                 type="number"
                 name="MDVP:Jitter(Abs)"
-                placeholder="Absolute change in frequency"
                 value={formData['MDVP:Jitter(Abs)']}
                 onChange={handleChange}
                 required
@@ -229,12 +224,11 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaVolumeUp /> MDVP:RAP
+                <FaVolumeUp /> MDVP:RAP - Short-term variability
               </Label>
               <Input
                 type="number"
                 name="MDVP:RAP"
-                placeholder="Short-term variability in the frequency"
                 value={formData['MDVP:RAP']}
                 onChange={handleChange}
                 required
@@ -244,12 +238,11 @@ function ParkinsonsForm() {
           <FormRow>
             <FormGroup>
               <Label>
-                <FaVolumeUp /> MDVP:PPQ
+                <FaVolumeUp /> MDVP:PPQ - Change in pitch periods over times
               </Label>
               <Input
                 type="number"
                 name="MDVP:PPQ"
-                placeholder="Measures the change in pitch periods over time"
                 value={formData['MDVP:PPQ']}
                 onChange={handleChange}
                 required
@@ -257,12 +250,12 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaMicrophone /> Jitter:DDP
+                <FaMicrophone /> Jitter:DDP - Average absolute difference
+                between consecutive sound periods
               </Label>
               <Input
                 type="number"
                 name="Jitter:DDP"
-                placeholder="Average absolute difference between consecutive sound periods"
                 value={formData['Jitter:DDP']}
                 onChange={handleChange}
                 required
@@ -270,12 +263,11 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaWaveSquare /> MDVP:Shimmer
+                <FaWaveSquare /> MDVP:Shimmer - Change in voice amplitudes
               </Label>
               <Input
                 type="number"
                 name="MDVP:Shimmer"
-                placeholder="Change in voice amplitudes"
                 value={formData['MDVP:Shimmer']}
                 onChange={handleChange}
                 required
@@ -285,12 +277,12 @@ function ParkinsonsForm() {
           <FormRow>
             <FormGroup>
               <Label>
-                <FaMicrophone /> MDVP:Shimmer(dB)
+                <FaMicrophone /> MDVP:Shimmer(dB) - Change in sound amplitudes
+                in decibel
               </Label>
               <Input
                 type="number"
                 name="MDVP:Shimmer(dB)"
-                placeholder="Change in sound amplitudes in decibel"
                 value={formData['MDVP:Shimmer(dB)']}
                 onChange={handleChange}
                 required
@@ -298,12 +290,12 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaMicrophone /> Shimmer:APQ3
+                <FaMicrophone /> Shimmer:APQ3 - Variability in amplitude during
+                three height periods
               </Label>
               <Input
                 type="number"
                 name="Shimmer:APQ3"
-                placeholder="Variability in amplitude during three height periods"
                 value={formData['Shimmer:APQ3']}
                 onChange={handleChange}
                 required
@@ -311,12 +303,12 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaVolumeUp /> Shimmer:APQ5
+                <FaVolumeUp /> Shimmer:APQ5 - Variability in amplitude during
+                five height periods
               </Label>
               <Input
                 type="number"
                 name="Shimmer:APQ5"
-                placeholder="variability in amplitude during five height periods"
                 value={formData['Shimmer:APQ5']}
                 onChange={handleChange}
                 required
@@ -326,12 +318,12 @@ function ParkinsonsForm() {
           <FormRow>
             <FormGroup>
               <Label>
-                <FaVolumeUp /> MDVP:APQ
+                <FaVolumeUp /> MDVP:APQ - Provides a wider measure of amplitude
+                variability
               </Label>
               <Input
                 type="number"
                 name="MDVP:APQ"
-                placeholder="Provides a wider measure of amplitude variability"
                 value={formData['MDVP:APQ']}
                 onChange={handleChange}
                 required
@@ -339,12 +331,12 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaWaveSquare /> Shimmer:DDA
+                <FaWaveSquare /> Shimmer:DDA - Mean absolute difference between
+                consecutive amplitude periods
               </Label>
               <Input
                 type="number"
                 name="Shimmer:DDA"
-                placeholder="Mean absolute difference between consecutive amplitude periods"
                 value={formData['Shimmer:DDA']}
                 onChange={handleChange}
                 required
@@ -352,12 +344,12 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaMicrophone /> NHR
+                <FaMicrophone /> NHR - Amount of noise relative to the harmonic
+                components of the sound
               </Label>
               <Input
                 type="number"
                 name="NHR"
-                placeholder="Amount of noise relative to the harmonic components of the sound."
                 value={formData['NHR']}
                 onChange={handleChange}
                 required
@@ -367,12 +359,12 @@ function ParkinsonsForm() {
           <FormRow>
             <FormGroup>
               <Label>
-                <FaVolumeUp /> HNR
+                <FaVolumeUp /> HNR - The proportion of harmonic sound relative
+                to noise
               </Label>
               <Input
                 type="number"
                 name="HNR"
-                placeholder="The proportion of harmonic sound relative to noise"
                 value={formData['HNR']}
                 onChange={handleChange}
                 required
@@ -380,12 +372,11 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaWaveSquare /> RPDE
+                <FaWaveSquare /> RPDE - The complexity of audio signals
               </Label>
               <Input
                 type="number"
                 name="RPDE"
-                placeholder="The complexity of audio signals"
                 value={formData['RPDE']}
                 onChange={handleChange}
                 required
@@ -393,12 +384,12 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaMicrophone /> DFA
+                <FaMicrophone /> DFA - Self-similarity, or fractal scaling,
+                properties of the audio signal
               </Label>
               <Input
                 type="number"
                 name="DFA"
-                placeholder="Self-similarity, or fractal scaling, properties of the audio signal"
                 value={formData['DFA']}
                 onChange={handleChange}
                 required
@@ -408,12 +399,12 @@ function ParkinsonsForm() {
           <FormRow>
             <FormGroup>
               <Label>
-                <FaWaveSquare /> Spread1
+                <FaWaveSquare /> Spread1 - The range of frequency components in
+                the audio signal
               </Label>
               <Input
                 type="number"
                 name="spread1"
-                placeholder="The range of frequency components in the audio signal"
                 value={formData['spread1']}
                 onChange={handleChange}
                 required
@@ -433,12 +424,11 @@ function ParkinsonsForm() {
             </FormGroup>
             <FormGroup>
               <Label>
-                <FaVolumeUp /> D2
+                <FaVolumeUp /> D2 - The complexity of the vocal signal
               </Label>
               <Input
                 type="number"
                 name="D2"
-                placeholder="The complexity of the vocal signal"
                 value={formData['D2']}
                 onChange={handleChange}
                 required
@@ -448,12 +438,11 @@ function ParkinsonsForm() {
           <FormRow>
             <FormGroup>
               <Label>
-                <FaMicrophoneAlt /> PPE
+                <FaMicrophoneAlt /> PPE - Randomness in pitch periods
               </Label>
               <Input
                 type="number"
                 name="PPE"
-                placeholder="Randomness in pitch periods"
                 value={formData['PPE']}
                 onChange={handleChange}
                 required
@@ -462,12 +451,12 @@ function ParkinsonsForm() {
           </FormRow>
           <Button type="submit">Predict</Button>
         </form>
-        {result && (
+        {result !== null && (
           <Result>
             Prediction Result:{' '}
             {result === 1
-              ? "Has Parkinson's Disease"
-              : "Does not have Parkinson's Disease"}
+              ? 'You have Parkinsons disease'
+              : 'You do not have Parkinsons disease'}
           </Result>
         )}
         <BackButton onClick={() => navigate('/')}>

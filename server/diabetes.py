@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn import svm
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score,confusion_matrix
 from sklearn.linear_model import LogisticRegression
 import warnings
 import matplotlib.pyplot as plt
@@ -47,6 +47,16 @@ print(train_accuracy)
 x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(y_test, x_test_prediction)
 print(test_accuracy)
+
+cm = confusion_matrix(y_test,x_test_prediction)
+print("Confusion matrix")
+print(cm)
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Reds')
+plt.title('Confusion Matrix')
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.show()
 
 
 with open('Models/diabetes_model.sav', 'wb') as f:

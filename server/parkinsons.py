@@ -6,6 +6,7 @@ from sklearn import svm
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 import warnings
+from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn
 import pickle
@@ -52,6 +53,18 @@ x_test_prediction = classifier.predict(x_test)
 test_accuracy = accuracy_score(x_test_prediction,y_test)
 print("Test accuracy score: ",test_accuracy)
 
+#Confusion matrix
+
+cm = confusion_matrix(y_test,x_test_prediction)
+print("Confusion Matrix: ")
+print(cm)
+plt.figure(figsize=(8, 6))
+seaborn.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.title('Confusion Matrix')
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.show()
+
 
 with open('parkinsons_model.sav','wb') as f:
     pickle.dump((classifier,scaler),f)
@@ -82,6 +95,7 @@ def data_visualization():
     plt.ylabel('MDVP:Fhi(Hz)')
     plt.show()
 
+   
     # Heatmap - Drop non-numeric columns for correlation calculation
     numeric_dataset = parkinsons_dataset.drop(columns=['name'])
     correlation_matrix = numeric_dataset.corr()
@@ -99,5 +113,6 @@ def data_visualization():
     plt.show()
 
 
-if __name__ == '__main__':
-    data_visualization()
+
+# if __name__ == '__main__':
+#     data_visualization()

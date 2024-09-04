@@ -272,7 +272,6 @@ function Heart_Disease_Form() {
                 name="exang"
                 min="0"
                 max="1"
-                placeholder="Chest pain after physical activities"
                 value={formData.exang}
                 onChange={handleChange}
                 required
@@ -340,7 +339,9 @@ function Heart_Disease_Form() {
         {result !== null && (
           <Result>
             Prediction Result:{' '}
-            {result === 1 ? 'You have Diabetes' : 'You do not have Diabetes'}
+            {result === 1
+              ? 'You have heart disease'
+              : 'You do not have heart disease'}
           </Result>
         )}
         <BackButton onClick={() => navigate('/')}>
